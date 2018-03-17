@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ecrowd.ecrowd.ui.DynamicFormCreate"
+    android:background="#2787A4">
+
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <Spinner
+            android:id="@+id/spinner_fieldType_dynamicFormCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:layout_below="@+id/text_fieldTitle_dynamicFormCreate"
+            android:layout_alignRight="@+id/label_addField_dynamicFormCreate"
+            android:layout_alignEnd="@+id/label_addField_dynamicFormCreate" />
+
+        <TextView
+            android:id="@+id/label_title_dynamic_form_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_title_dynamic_form_create"
+            android:layout_marginTop="23dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/btn_submitField_dynamicFormCreate"
+            android:layout_alignEnd="@+id/btn_submitField_dynamicFormCreate" />
+
+        <Button
+            android:id="@+id/btn_submitForm_dynamicFormCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="45dp"
+            android:text="@string/btn_submitForm_dynamicFormCreate"
+            android:onClick="submit_dynamic_form"/>
+
+        <EditText
+            android:id="@+id/text_titleSurvey_dynamicFormCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/label_title_dynamic_form_create"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:ems="10"
+            android:hint="@string/text_titleSurvey_dynamicFormCreate"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btn_submitField_dynamicFormCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_submitField_dynamicFormCreate"
+            android:layout_marginTop="63dp"
+            android:layout_alignTop="@+id/spinner_fieldType_dynamicFormCreate"
+            android:layout_alignLeft="@+id/btn_submitForm_dynamicFormCreate"
+            android:layout_alignStart="@+id/btn_submitForm_dynamicFormCreate"
+            android:onClick="submit_field_clicked"/>
+
+        <TextView
+            android:id="@+id/label_addField_dynamicFormCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_addField_dynamicFormCreate"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/text_titleSurvey_dynamicFormCreate"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/text_fieldTitle_dynamicFormCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_titleSurvey_dynamicFormCreate"
+            android:layout_alignStart="@+id/text_titleSurvey_dynamicFormCreate"
+            android:layout_below="@+id/label_addField_dynamicFormCreate"
+            android:layout_marginTop="22dp"
+            android:ems="10"
+            android:hint="@string/text_fieldTitle_dynamicFormCreate"
+            android:inputType="textPersonName" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
