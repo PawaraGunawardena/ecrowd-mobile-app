@@ -39,6 +39,7 @@ public class DynamicFormView extends AppCompatActivity {
         getFormSerializableData();
 
         setSurveyFormName();
+        setWidgetListToPriview();
 //        String[] myListWidgets = myItems.split(",");
 //        for (int x = 0; x < myListWidgets.length; x++) {
 //            myWidgets.add(0, myListWidgets[0]);
@@ -80,7 +81,13 @@ public class DynamicFormView extends AppCompatActivity {
 
         //preview the widgets
         for (int x = 0; x < survey_partials.size(); x++) {
-
+            FormPartial instant_partial = survey_partials.get(x);
+            String instnt_partial_type = instant_partial.getAttribute_type();
+            if (instnt_partial_type.equals("Button") ){
+                createButton( x+2 );
+            }else if (instnt_partial_type.equals("Text")) {
+                createEditText(x+2);
+            }
         }
     }
 
