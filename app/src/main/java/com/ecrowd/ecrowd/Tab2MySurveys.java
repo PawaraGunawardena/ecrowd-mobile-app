@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ecrowd.ecrowd.data.FormData;
+import com.ecrowd.ecrowd.data.model.User;
 
 import java.util.ArrayList;
 
@@ -23,8 +24,13 @@ import java.util.ArrayList;
 
 public class Tab2MySurveys extends Fragment {
     String TAG = "COOOOOOOOOO";
+    private User user;
 
     public Tab2MySurveys() {
+    }
+
+    public Tab2MySurveys(User user) {
+        this.user = user;
     }
 
     @Override
@@ -40,7 +46,7 @@ public class Tab2MySurveys extends Fragment {
 
             ArrayList<String> listItems = new ArrayList<>();
 
-            Cursor data = form_data.getFormNameByUser("z");
+            Cursor data = form_data.getFormNameByUser(user.getUsername());
 
             if(data.getCount() == 0){
                 Toast.makeText(this.getContext(), "Table was empty", Toast.LENGTH_LONG).show();

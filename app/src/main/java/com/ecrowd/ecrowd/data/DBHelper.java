@@ -17,7 +17,7 @@ import com.ecrowd.ecrowd.data.schema.IUserSchema;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "cicho.db";
+    public static final String DATABASE_NAME = "slavery.db";
     private String TAG = "COOOOOOOOOOL";
 
     public DBHelper(Context context) {

@@ -1,4 +1,4 @@
-package com.ecrowd.ecrowd;
+package com.ecrowd.ecrowd.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.ecrowd.ecrowd.R;
 import com.ecrowd.ecrowd.data.UserData;
 import com.ecrowd.ecrowd.data.model.User;
 import com.ecrowd.ecrowd.ui.Login;

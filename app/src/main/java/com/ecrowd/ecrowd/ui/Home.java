@@ -1,9 +1,8 @@
-package com.ecrowd.ecrowd;
+package com.ecrowd.ecrowd.ui;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -12,16 +11,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
-
+import com.ecrowd.ecrowd.R;
+import com.ecrowd.ecrowd.Tab1AllSurveys;
+import com.ecrowd.ecrowd.Tab2MySurveys;
+import com.ecrowd.ecrowd.Tab3CollectedData;
 import com.ecrowd.ecrowd.data.model.User;
-import com.ecrowd.ecrowd.ui.DynamicFormCreate;
 
 public class Home extends AppCompatActivity {
 
@@ -124,10 +122,10 @@ public class Home extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    Tab1AllSurveys tab1 = new Tab1AllSurveys();
+                    Tab1AllSurveys tab1 = new Tab1AllSurveys(user);
                     return tab1;
                 case 1:
-                    Tab2MySurveys tab2 = new Tab2MySurveys();
+                    Tab2MySurveys tab2 = new Tab2MySurveys(user);
                     return tab2;
                 case 2:
                     Tab3CollectedData tab3 = new Tab3CollectedData();

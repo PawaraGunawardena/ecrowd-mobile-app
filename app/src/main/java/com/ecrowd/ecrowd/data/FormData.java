@@ -34,8 +34,6 @@ public class FormData {
     public void addForm(Form form) {
         ContentValues values_table_form = new ContentValues();
 
-
-
         values_table_form.put(IFormSchema.FORM_NAME, form.getForm_name());
         values_table_form.put(IFormSchema.TABLE_NAME, form.getTable_name());
         values_table_form.put(IFormSchema.STARTING_DATE, form.getStarting_date());
@@ -170,6 +168,13 @@ public class FormData {
         return formName;
 
 
+    }
+
+    public Form getFormByFormName(String form_name){
+        Form form = new Form();
+
+
+        return form;
     }
 
 }

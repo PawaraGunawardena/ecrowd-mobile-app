@@ -1,5 +1,7 @@
 package com.ecrowd.ecrowd;
 
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,12 +9,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ecrowd.ecrowd.data.FormData;
+import com.ecrowd.ecrowd.data.FormDataAccess;
+import com.ecrowd.ecrowd.data.FormGeneralData;
+import com.ecrowd.ecrowd.data.model.FormGeneral;
+import com.ecrowd.ecrowd.data.model.FormPartial;
+import com.ecrowd.ecrowd.data.model.User;
+import com.ecrowd.ecrowd.ui.DynamicFormView;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;
@@ -26,22 +35,39 @@ public class Tab1AllSurveys extends Fragment {
 
 
     String TAG = "COOOOOOOOOO";
+    private User user;
+    Context passingContext;
+    View rootView;
+    ListView listView;
+    FormData form_data;
+    ListAdapter listAdapter;
+    private String selected_value;
+    private FormDataAccess formDataAccess;
+
+    FormGeneral form_general;
+    FormGeneralData form_general_infomation_supplier;
+
     public Tab1AllSurveys() {
 
     }
-
+    public Tab1AllSurveys(User user) {
+        this.user = user;
+    }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
-        View rootView = inflater.inflate(R.layout.fragment_tab1_all_surveys, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
+        rootView = inflater.inflate(R.layout.fragment_tab1_all_surveys, container, false);
+        passingContext = this.getActivity().getBaseContext();
+        formDataAccess = new FormDataAccess(passingContext);
+
+        form_general = new FormGeneral();
+        form_general_infomation_supplier = new FormGeneralData(passingContext);
+
         try {
-//            String[] spaceCrafts = {"Juno", "Clr", "torsan"};
+            listView = (ListView) rootView.findViewById(R.id.id_listView_tab1);
+            form_data = new FormData(this.getContext());
 
-            ListView listView = (ListView) rootView.findViewById(R.id.id_listView_tab1);
-            FormData form_data = new FormData(this.getContext());
-
-            ArrayList<String> listItems = new ArrayList<>();
+            final ArrayList<String> listItems = new ArrayList<>();
             Cursor data = form_data.getFormName();
 
             if(data.getCount() == 0){
@@ -50,10 +76,47 @@ public class Tab1AllSurveys extends Fragment {
             }else{
                 while(data.moveToNext()){
                     listItems.add(data.getString(1));
-                    ListAdapter listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,listItems);
-                    listView.setAdapter(listAdapter);
+                    listAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,listItems);
+
                 }
+                listView.setAdapter(listAdapter);
             }
+
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    Log.i(TAG,"WZZZZZEEEEEEEEEEEEEEEEEEEEEEEER");
+
+                    try{
+
+                        Intent dynamicForm = new Intent(passingContext, DynamicFormView.class);
+
+                        //reading the currently selected value
+                        selected_value = listItems.get(i);
+
+                        //get the forms basic information like form_name, username, starting, closing dates and pass them
+                        form_general = form_general_infomation_supplier.get_form_general(selected_value,user.getUsername());
+                        dynamicForm.putExtra("FormBasicInformation",form_general);
+
+                        //get the list of attributes details as ArrayList of FormPartials and pass them
+                        ArrayList<FormPartial> selected_form_partials = formDataAccess.get_form_partials((String)selected_value);
+                        dynamicForm.putExtra("selected_survey_partials",selected_form_partials);
+
+                        //Example test value, need to delete
+                        dynamicForm.putExtra("itemList", "Button,Text");
+
+                        startActivity(dynamicForm);
+
+                    }catch(Exception e){
+                        Log.i(TAG,e.getMessage());
+                    }
+
+                }
+            });
+
+
 //            ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
 //                    getActivity(),
 //                    android.R.layout.simple_list_item_1,

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SignUp"
+            android:name=".ui.Login"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Home"
+            android:name=".ui.Home"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -29,8 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Login" />
+
+        <activity android:name=".ui.SignUp" />
         <activity android:name=".ui.DynamicFormCreate"></activity>
+        <activity android:name=".ui.DynamicFormView" ></activity>
     </application>
 
 </manifest>

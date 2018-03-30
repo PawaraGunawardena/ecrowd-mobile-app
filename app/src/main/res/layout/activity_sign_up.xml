@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ecrowd.ecrowd.SignUp"
+    tools:context="com.ecrowd.ecrowd.ui.SignUp"
     android:background="#2787A4"
     >
 

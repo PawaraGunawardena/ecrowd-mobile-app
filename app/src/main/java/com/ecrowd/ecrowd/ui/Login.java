@@ -7,9 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.ecrowd.ecrowd.Home;
 import com.ecrowd.ecrowd.R;
-import com.ecrowd.ecrowd.SignUp;
 import com.ecrowd.ecrowd.data.UserData;
 import com.ecrowd.ecrowd.data.model.User;
 
