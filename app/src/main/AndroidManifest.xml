@@ -33,6 +33,7 @@
         <activity android:name=".ui.SignUp" />
         <activity android:name=".ui.DynamicFormCreate"></activity>
         <activity android:name=".ui.DynamicFormView" ></activity>
+        <activity android:name=".ui.DynamicFormDataCollectionView" ></activity>
     </application>
 
 </manifest>

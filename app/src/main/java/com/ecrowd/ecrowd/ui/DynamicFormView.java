@@ -35,7 +35,7 @@ public class DynamicFormView extends AppCompatActivity {
     private Intent intent;
     private User user;
     private String TAG = "OOOOOOPS";
-
+    private String TAG2 = "user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,7 +44,16 @@ public class DynamicFormView extends AppCompatActivity {
         formLayout.setBackgroundColor(Color.CYAN);
 
         intent = getIntent();
-        getFormSerializableData();
+        //Form Basic Information
+        form_general = (FormGeneral) intent.getSerializableExtra("FormBasicInformation");
+        //Form Widget Information
+        survey_partials = (ArrayList<FormPartial>) intent.getSerializableExtra("selected_survey_partials");
+        //set the name of the survey name
+        survey_name = form_general.getForm_name();
+        //Current User
+        user = (User) intent.getSerializableExtra("user");
+//        getFormSerializableData();
+        Log.e(TAG2, user.getUsername()+ " current dynamic form surrent user name");
 
         setSurveyFormName();
         setWidgetListToPriview();
@@ -207,8 +216,8 @@ public class DynamicFormView extends AppCompatActivity {
                 }
                 DynamicFormData dynamicFormData = new DynamicFormData(survey_partials,form_general,DynamicFormView.this);
 
-                Log.e(TAG, dynamicFormData.getInsertQuery());
-                dynamicFormData.insertIntoDynamicFormTable();
+                Log.e(TAG, dynamicFormData.getInsertQuery(user.getUsername(), form_general.getTable_name()));
+                dynamicFormData.insertIntoDynamicFormTable(user, form_general);
                 Intent home = new Intent(DynamicFormView.this, Home.class);
                 home.putExtra("UserAccount", user);
                 startActivity(home);

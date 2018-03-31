@@ -21,6 +21,7 @@ import com.ecrowd.ecrowd.data.FormGeneralData;
 import com.ecrowd.ecrowd.data.model.FormGeneral;
 import com.ecrowd.ecrowd.data.model.FormPartial;
 import com.ecrowd.ecrowd.data.model.User;
+import com.ecrowd.ecrowd.ui.DynamicFormDataCollectionView;
 import com.ecrowd.ecrowd.ui.DynamicFormView;
 
 import java.util.ArrayList;
@@ -82,20 +83,21 @@ public class Tab3CollectedData extends Fragment {
             }
 
 
-
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                     try{
 
-                        Intent dynamicForm = new Intent(passingContext, DynamicFormView.class);
+                        Intent dynamicForm = new Intent(passingContext, DynamicFormDataCollectionView.class);
 
                         //reading the currently selected value
                         selected_value = listItems.get(i);
 
                         //get the forms basic information like form_name, username, starting, closing dates and pass them
-                        form_general = form_general_infomation_supplier.get_form_general(selected_value,user.getUsername());
+                        form_general = form_general_infomation_supplier.get_form_general(selected_value
+//                                ,user.getUsername()
+                        );
                         dynamicForm.putExtra("FormBasicInformation",form_general);
 
                         //get the list of attributes details as ArrayList of FormPartials and pass them

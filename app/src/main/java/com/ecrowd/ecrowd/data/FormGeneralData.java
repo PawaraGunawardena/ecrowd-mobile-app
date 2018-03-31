@@ -18,6 +18,7 @@ public class FormGeneralData {
     private DBHelper crowdDatabaseHelper;
     private SQLiteDatabase db;
     private String TAG = "COOOOOOOOOO";
+    String TAGOO = "OOOOOOPS";
     private FormGeneral form_general;
 
 //    private DynamicFormTableSchema formTableSchema;
@@ -30,12 +31,53 @@ public class FormGeneralData {
 //        formTableSchema = new DynamicFormTableSchema();
     }
 
-    public FormGeneral get_form_general(String form_name) {
-        Cursor form_general_cursor = db.rawQuery("SELECT attribute_type FROM " + IFormSchema.TABLE_FORM + " WHERE form_name = '" + form_name+"'", null);
+//    public FormGeneral get_form_general(String form_name) {
+//        Cursor form_general_cursor = db.rawQuery("SELECT attribute_type FROM " + IFormSchema.TABLE_FORM + " WHERE form_name = '" + form_name+"'", null);
+//        if (form_general_cursor.getCount() == 0) {
+////            Toast.makeText(this, "Table was empty", Toast.LENGTH_LONG).show();
+//        } else {
+//            Log.i(TAG,"Meauw Meauw 1");
+//            int iform_name;
+//            int itable_name;
+//            int istarting_date;
+//            int iclosing_date;
+//            int iusername;
+//            iform_name = form_general_cursor.getColumnIndexOrThrow(IFormSchema.FORM_NAME);
+//            itable_name = form_general_cursor.getColumnIndexOrThrow(IFormSchema.TABLE_NAME);
+//            istarting_date = form_general_cursor.getColumnIndexOrThrow(IFormSchema.STARTING_DATE);
+//            iclosing_date = form_general_cursor.getColumnIndexOrThrow(IFormSchema.CLOSING_DATE);
+//            iusername =form_general_cursor.getColumnIndexOrThrow(IFormSchema.USER_NAME);
+//            Log.i(TAG,"Meauw Meauw 2");
+//            form_general = new FormGeneral();
+//            form_general.setForm_name(form_general_cursor.getString(iform_name));
+//            form_general.setTable_name(form_general_cursor.getString(itable_name));
+//            form_general.setClosing_date(form_general_cursor.getString(iclosing_date));
+//            form_general.setStarting_date(form_general_cursor.getString(istarting_date));
+//            form_general.setUsername(form_general_cursor.getString(iusername));
+//            Log.i(TAG,"Meauw Meauw 3");
+//        }
+//        return form_general;
+//    }
+
+    public FormGeneral get_form_general(String form_name
+//                                        String username
+    ) {
+        String query = "SELECT * FROM " + IFormSchema.TABLE_FORM +
+                " WHERE form_name = '" + form_name+
+                "' " +
+//                "AND username ='"+username+"'";
+                "";
+
+
+        Cursor form_general_cursor = db.rawQuery(query,
+                null);
+
         if (form_general_cursor.getCount() == 0) {
+            Log.i(TAGOO,query+" TYPED QUERY AT FORMGENERALADTA get_form_general count = "+form_general_cursor.getCount());
 //            Toast.makeText(this, "Table was empty", Toast.LENGTH_LONG).show();
+
         } else {
-            Log.i(TAG,"Meauw Meauw 1");
+//            Log.i(TAGOO,"Meauw Meauw  11 "+ form_name+" "+username+" count "+form_general_cursor.getCount() );
             int iform_name;
             int itable_name;
             int istarting_date;
@@ -46,45 +88,19 @@ public class FormGeneralData {
             istarting_date = form_general_cursor.getColumnIndexOrThrow(IFormSchema.STARTING_DATE);
             iclosing_date = form_general_cursor.getColumnIndexOrThrow(IFormSchema.CLOSING_DATE);
             iusername =form_general_cursor.getColumnIndexOrThrow(IFormSchema.USER_NAME);
-            Log.i(TAG,"Meauw Meauw 2");
-            form_general = new FormGeneral();
-            form_general.setForm_name(form_general_cursor.getString(iform_name));
-            form_general.setTable_name(form_general_cursor.getString(itable_name));
+
+            Log.i(TAGOO,"Meauw Meauw  12 " +iform_name+" "+itable_name+" "+iusername);
+            while (form_general_cursor.moveToNext()) {
+//            form_general = new FormGeneral();
+                String form_instant_username = form_general_cursor.getString(iform_name);
+            form_general.setForm_name(form_instant_username);
+                String form_instant_tablename= form_general_cursor.getString(itable_name);
+            form_general.setTable_name(form_instant_tablename);
             form_general.setClosing_date(form_general_cursor.getString(iclosing_date));
             form_general.setStarting_date(form_general_cursor.getString(istarting_date));
             form_general.setUsername(form_general_cursor.getString(iusername));
-            Log.i(TAG,"Meauw Meauw 3");
-        }
-        return form_general;
-    }
 
-    public FormGeneral get_form_general(String form_name,String username) {
-
-        Cursor form_general_cursor = db.rawQuery("SELECT * FROM " + IFormSchema.TABLE_FORM +
-                " WHERE form_name = '" + form_name+
-                "' AND username ='"+username+"'",
-                null);
-        if (form_general_cursor.getCount() == 0) {
-//            Toast.makeText(this, "Table was empty", Toast.LENGTH_LONG).show();
-        } else {Log.i(TAG,"Meauw Meauw  11 "+ form_name+" "+username+" count "+form_general_cursor.getCount() );
-            int iform_name;
-            int itable_name;
-            int istarting_date;
-            int iclosing_date;
-            int iusername;
-            iform_name = form_general_cursor.getColumnIndexOrThrow(IFormSchema.FORM_NAME);
-            itable_name = form_general_cursor.getColumnIndexOrThrow(IFormSchema.TABLE_NAME);
-            istarting_date = form_general_cursor.getColumnIndexOrThrow(IFormSchema.STARTING_DATE);
-            iclosing_date = form_general_cursor.getColumnIndexOrThrow(IFormSchema.CLOSING_DATE);
-            iusername =form_general_cursor.getColumnIndexOrThrow(IFormSchema.USER_NAME);
-            Log.i(TAG,"Meauw Meauw  12 " +iform_name+" "+itable_name+" "+iusername);
-            while (form_general_cursor.moveToNext()) {
-            form_general = new FormGeneral();
-            form_general.setForm_name(form_general_cursor.getString(iform_name));
-            form_general.setTable_name(form_general_cursor.getString(itable_name));
-            form_general.setClosing_date(form_general_cursor.getString(iclosing_date));
-            form_general.setStarting_date(form_general_cursor.getString(istarting_date));
-            form_general.setUsername(form_general_cursor.getString(iusername));Log.i(TAG,"Meauw Meauw 3");
+                Log.i(TAGOO,"Meauw Meauw 3 table:" + form_instant_tablename+" username:"+form_instant_username);
         }
 
     }return form_general;

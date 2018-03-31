@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
             Intent home = new Intent(this, Home.class);
 
             home.putExtra("UserAccount", user);
+            Log.i(TAG,user.getUsername()+" passing users username");
             startActivity(home);
         }else{
             Log.i(TAG,password+" given password");

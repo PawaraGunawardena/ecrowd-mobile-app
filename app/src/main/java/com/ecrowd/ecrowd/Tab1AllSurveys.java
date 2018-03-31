@@ -35,6 +35,8 @@ public class Tab1AllSurveys extends Fragment {
 
 
     String TAG = "COOOOOOOOOO";
+    String TAG3 ="OOOOOOPS";
+    String TAG2 = "user";
     private User user;
     Context passingContext;
     View rootView;
@@ -52,6 +54,8 @@ public class Tab1AllSurveys extends Fragment {
     }
     public Tab1AllSurveys(User user) {
         this.user = user;
+        Log.i(TAG2,user.getUsername() + " tab1 current user");
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -95,7 +99,12 @@ public class Tab1AllSurveys extends Fragment {
                         selected_value = listItems.get(i);
 
                         //get the forms basic information like form_name, username, starting, closing dates and pass them
-                        form_general = form_general_infomation_supplier.get_form_general(selected_value,user.getUsername());
+                        form_general = form_general_infomation_supplier.get_form_general(selected_value
+//                                ,user.getUsername()
+                        );
+
+                        Log.i(TAG3,selected_value+" Selecet");
+                        Log.i(TAG3,"Table selected ones "+form_general.getTable_name());
                         dynamicForm.putExtra("FormBasicInformation",form_general);
 
                         //get the list of attributes details as ArrayList of FormPartials and pass them

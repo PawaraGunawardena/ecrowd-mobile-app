@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,7 @@ public class Home extends AppCompatActivity {
      */
     public User user;
     private ViewPager mViewPager;
-
+    String TAG = "user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +74,7 @@ public class Home extends AppCompatActivity {
 
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("UserAccount");
-
+        Log.i(TAG,user.getUsername()+" home current users username");
     }
 
 
