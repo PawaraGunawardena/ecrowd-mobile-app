@@ -128,7 +128,7 @@ public class Home extends AppCompatActivity {
                     Tab2MySurveys tab2 = new Tab2MySurveys(user);
                     return tab2;
                 case 2:
-                    Tab3CollectedData tab3 = new Tab3CollectedData();
+                    Tab3CollectedData tab3 = new Tab3CollectedData(user);
                     return tab3;
                 default:
                     return null;

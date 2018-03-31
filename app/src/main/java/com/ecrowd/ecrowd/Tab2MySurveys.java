@@ -58,12 +58,7 @@ public class Tab2MySurveys extends Fragment {
                     listView.setAdapter(listAdapter);
                 }
             }
-//            ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
-//                    getActivity(),
-//                    android.R.layout.simple_list_item_1,
-//                    spaceCrafts
-//            );
-//            listView.setAdapter(listViewAdapter);
+
         }catch(Exception e){
             Log.i(TAG,e.getMessage());
         }

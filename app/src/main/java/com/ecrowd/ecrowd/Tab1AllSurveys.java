@@ -87,8 +87,6 @@ public class Tab1AllSurveys extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                    Log.i(TAG,"WZZZZZEEEEEEEEEEEEEEEEEEEEEEEER");
-
                     try{
 
                         Intent dynamicForm = new Intent(passingContext, DynamicFormView.class);
@@ -105,7 +103,7 @@ public class Tab1AllSurveys extends Fragment {
                         dynamicForm.putExtra("selected_survey_partials",selected_form_partials);
 
                         //Example test value, need to delete
-                        dynamicForm.putExtra("itemList", "Button,Text");
+                        dynamicForm.putExtra("user", user);
 
                         startActivity(dynamicForm);
 
@@ -116,13 +114,6 @@ public class Tab1AllSurveys extends Fragment {
                 }
             });
 
-
-//            ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
-//                    getActivity(),
-//                    android.R.layout.simple_list_item_1,
-//                    spaceCrafts
-//            );
-//            listView.setAdapter(listViewAdapter);
         }catch(Exception e){
             Log.i(TAG,e.getMessage());
         }

@@ -7,6 +7,11 @@ import java.io.Serializable;
  */
 
 public class FormPartial implements Serializable {
+    private String attribute_value;
+    private int id;
+
+
+
     private String attribute_title ;
     private String attribute_type ;
     private String Mobility ;
@@ -47,4 +52,21 @@ public class FormPartial implements Serializable {
     public void setForm_name(String form_name) {
         this.form_name = form_name;
     }
+
+    public String getAttribute_value() {
+        return attribute_value;
+    }
+
+    public void setAttribute_value(String attribute_value) {
+        this.attribute_value = attribute_value;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

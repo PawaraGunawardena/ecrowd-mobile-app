@@ -4,101 +4,149 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ecrowd.ecrowd.Tab1AllSurveys;
+import com.ecrowd.ecrowd.data.DynamicFormData;
 import com.ecrowd.ecrowd.data.model.FormGeneral;
 import com.ecrowd.ecrowd.data.model.FormPartial;
+import com.ecrowd.ecrowd.data.model.User;
 
 import java.util.ArrayList;
 
 public class DynamicFormView extends AppCompatActivity {
 
-    ArrayList<String> myWidgets = new ArrayList<>();
+//    ArrayList<String> myWidgets = new ArrayList<>();
 
     RelativeLayout formLayout ;
 
     private FormGeneral form_general;
     private ArrayList<FormPartial> survey_partials;
 
-    String myItems;
     private String survey_name;
     private Intent intent;
+    private User user;
+    private String TAG = "OOOOOOPS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         formLayout = new RelativeLayout(this);
-        formLayout.setBackgroundColor(Color.argb(12,12,13,12));
+        formLayout.setBackgroundColor(Color.CYAN);
 
         intent = getIntent();
         getFormSerializableData();
 
         setSurveyFormName();
         setWidgetListToPriview();
-//        String[] myListWidgets = myItems.split(",");
-//        for (int x = 0; x < myListWidgets.length; x++) {
-//            myWidgets.add(0, myListWidgets[0]);
-//            myWidgets.add(1, myListWidgets[1]);
-//        }
-//        createTextView(0, survey_name);
-//
-//        for (int x = 0; x < myWidgets.size(); x++){
-//            if (myWidgets.get(x).equals("Button") ){
-//                createButton( x+2 );
-//            }else if (myWidgets.get(x).equals("Text")) {
-//                createEditText(x+2);
-//            }
-//        }
         setContentView(formLayout);
     }
 
     //to keep the simplicity of the code this method seperately work to initialize the data of the form, which passed by the Tab item
     private void getFormSerializableData(){
-        //Testing String
-        myItems = (String) intent.getSerializableExtra("itemList");
-
         //Form Basic Information
         form_general = (FormGeneral) intent.getSerializableExtra("FormBasicInformation");
-
         //Form Widget Information
         survey_partials = (ArrayList<FormPartial>) intent.getSerializableExtra("selected_survey_partials");
-
         //set the name of the survey name
         survey_name = form_general.getForm_name();
+        //Current User
+        user = (User) intent.getSerializableExtra("user");
     }
 
     private void setSurveyFormName(){
         //preview the survey name
-        createTextView(0, survey_name);
+        TextView nameText = new TextView(this);
+        nameText.setId(1);
+        nameText.setText(survey_name);
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
+        nameText.setWidth(px);
+
+        RelativeLayout.LayoutParams txtDetails = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        txtDetails.addRule(RelativeLayout.ABOVE);
+        txtDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        txtDetails.setMargins(20,20,20,20);
+
+        formLayout.addView(nameText, txtDetails);
     }
 
     private void setWidgetListToPriview() {
-
+        int y=2;
         //preview the widgets
         for (int x = 0; x < survey_partials.size(); x++) {
+//            FormPartial previous_partial = survey_partials.get(x-1);
             FormPartial instant_partial = survey_partials.get(x);
-            String instnt_partial_type = instant_partial.getAttribute_type();
-            if (instnt_partial_type.equals("Button") ){
-                createButton( x+2 );
-            }else if (instnt_partial_type.equals("Text")) {
-                createEditText(x+2);
+            String instant_partial_type = instant_partial.getAttribute_type();
+            if (instant_partial_type.equals("Button") ){
+            }else if (instant_partial_type.equals("Text")) {
+//                createTextView(y, instant_partial.getAttribute_title());
+//                y+=1;
+                instant_partial.setId(y);
+                createEditText(y, instant_partial.getAttribute_title());
+                y+=1;
+
             }
         }
+        createButton( y);
     }
 
-    public void createButton(int y){
-        Button red = new Button(this);
-        red.setText("Submit");
+    public void createEditText(int y, String hint){
+        EditText nameText = new EditText(this);
+//        nameText.setText("Type Here");
+        nameText.setHint(hint);
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
+        nameText.setWidth(px);
+        nameText.setId(y);
+
+        RelativeLayout.LayoutParams txtDetails = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        txtDetails.addRule(RelativeLayout.BELOW, y-1);
+        txtDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        txtDetails.setMargins(0,10,0,10);
+
+        formLayout.addView(nameText, txtDetails);
+    }
+
+    public void createTextView(int y, String value){
+        TextView nameText = new TextView(this);
+        nameText.setText(value);
+        nameText.setId(y);
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
+        nameText.setWidth(px);
+
+        RelativeLayout.LayoutParams txtDetails = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        txtDetails.addRule(RelativeLayout.BELOW,(y-1));
+        txtDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        txtDetails.setMargins(0,10,0,10);
+
+        formLayout.addView(nameText, txtDetails);
+    }
+
+    public void createRadioButton(int y){
+        RadioButton button = new RadioButton(this);
+        button.setText("Submit");
         RelativeLayout.LayoutParams btnDetails = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
-        red.setId(y);
+        button.setId(y);
         if(y >= 2 ){
             btnDetails.addRule(RelativeLayout.BELOW);
 
@@ -110,56 +158,64 @@ public class DynamicFormView extends AppCompatActivity {
 
         int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
 
-        red.setWidth(px);
+        button.setWidth(px);
         btnDetails.setMargins(0,200,0,20);
-        formLayout.addView(red, btnDetails);
+        formLayout.addView(button, btnDetails);
     }
 
-    public void createEditText(int y){
-        EditText nameText = new EditText(this);
-        nameText.setText("Type Here");
-        RelativeLayout.LayoutParams txtDetails = new RelativeLayout.LayoutParams(
+    public void createButton(int y){
+
+        Button button = new Button(this);
+        button.setText("Submit");
+        button.setId(y);
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
+        button.setWidth(px);
+
+
+
+        RelativeLayout.LayoutParams btnDetails = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
-        nameText.setId(y);
+        btnDetails.addRule(RelativeLayout.BELOW, y-1);
+//        btnDetails.addRule(RelativeLayout.ALIGN_BOTTOM);
+        btnDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        btnDetails.setMargins(0,10,0,10);
 
-        if(y >= 2 ){
-            txtDetails.addRule(RelativeLayout.BELOW, y-1);
-        }else{
-            txtDetails.addRule(RelativeLayout.CENTER_VERTICAL);
-        }
-        txtDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        formLayout.addView(button, btnDetails);
 
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
-        nameText.setWidth(px);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.e(TAG, "Button Clicked !!!");
+                TextView tv = (TextView) findViewById(1);
+                Log.e(TAG, (String) tv.getText());
 
-        txtDetails.setMargins(0,50,0,20);
-        formLayout.addView(nameText, txtDetails);
+                int y = 2;
+                for (int x = 0; x < survey_partials.size(); x++) {
+                    FormPartial instant_partial = survey_partials.get(x);
+                    int id = instant_partial.getId();
 
+                    String instant_partial_type = instant_partial.getAttribute_type();
+                    if (instant_partial_type.equals("Button")){
+
+                    } else if (instant_partial_type.equals("Text")) {
+                        EditText editText = (EditText) findViewById(id);
+                        instant_partial.setAttribute_value(String.valueOf(editText.getText()));
+                        y += 1;
+                    }
+
+                }
+                DynamicFormData dynamicFormData = new DynamicFormData(survey_partials,form_general,DynamicFormView.this);
+
+                Log.e(TAG, dynamicFormData.getInsertQuery());
+                dynamicFormData.insertIntoDynamicFormTable();
+                Intent home = new Intent(DynamicFormView.this, Home.class);
+                home.putExtra("UserAccount", user);
+                startActivity(home);
+            }
+
+
+
+        });
     }
-
-    public void createTextView(int y, String value){
-        TextView nameText = new TextView(this);
-        nameText.setText(value);
-        RelativeLayout.LayoutParams txtDetails = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        nameText.setId(y);
-
-        if(y >= 2 ){
-            txtDetails.addRule(RelativeLayout.ABOVE,(y-1));
-        }else{
-            txtDetails.addRule(RelativeLayout.ABOVE);
-        }
-        txtDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
-
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
-        nameText.setWidth(px);
-
-        txtDetails.setMargins(0,20,0,20);
-        formLayout.addView(nameText, txtDetails);
-    }
-
 }
