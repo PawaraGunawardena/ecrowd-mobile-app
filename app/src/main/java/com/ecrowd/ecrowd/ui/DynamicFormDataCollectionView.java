@@ -10,6 +10,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 
+import com.ecrowd.ecrowd.R;
 import com.ecrowd.ecrowd.data.DynamicFormData;
 import com.ecrowd.ecrowd.data.model.FormGeneral;
 import com.ecrowd.ecrowd.data.model.FormPartial;
@@ -39,17 +40,19 @@ public class DynamicFormDataCollectionView extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, testValues);
         dynamicFormData = new DynamicFormData(this);
-
-
+//
+//
         formLayout = new RelativeLayout(this);
         formLayout.setBackgroundColor(Color.CYAN);
         intent = getIntent();
         getFormSerializableData();
-//        survey_partials = (ArrayList<FormPartial>) intent.getSerializableExtra("selected_survey_partials");
-        FormPartial fp = (FormPartial)survey_partials.get(1);
-        Log.i(TAG,fp.getAttribute_title()+" Is the 1st attribute title !!!!!!!!!!!");
+
+////        survey_partials = (ArrayList<FormPartial>) intent.getSerializableExtra("selected_survey_partials");
+//        FormPartial fp = (FormPartial)survey_partials.get(1);
+//        Log.i(TAG,fp.getAttribute_title()+" Is the 1st attribute title !!!!!!!!!!!");
 
         RelativeLayout.LayoutParams relativeLayoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.FILL_PARENT,
@@ -75,6 +78,7 @@ public class DynamicFormDataCollectionView extends AppCompatActivity {
         formLayout.addView(gridView);
 
         setContentView(formLayout, relativeLayoutParams);
+//        setContentView(R.layout.activity_login);
     }
 
     private void getFormSerializableData(){

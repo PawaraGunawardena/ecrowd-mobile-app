@@ -49,6 +49,7 @@ public class Tab3CollectedData extends Fragment {
     }
 
     public Tab3CollectedData(User user) {
+
         this.user = user;
     }
 

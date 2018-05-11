@@ -114,7 +114,7 @@ public class Home extends AppCompatActivity {
             return true;
         }
         else if (id == R.id.action_profile) {
-            
+
         }
         return super.onOptionsItemSelected(item);
     }
