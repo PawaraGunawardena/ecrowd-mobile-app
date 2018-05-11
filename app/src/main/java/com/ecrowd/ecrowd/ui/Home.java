@@ -1,6 +1,8 @@
 package com.ecrowd.ecrowd.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -100,7 +102,20 @@ public class Home extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_logout) {
+            SharedPreferences preferences =getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.clear();
+            editor.commit();
 
+            Intent login = new Intent(Home.this, Login.class);
+            startActivity(login);
+            finish();
+            return true;
+        }
+        else if (id == R.id.action_profile) {
+            
+        }
         return super.onOptionsItemSelected(item);
     }
 

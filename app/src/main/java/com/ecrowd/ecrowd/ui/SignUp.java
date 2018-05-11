@@ -75,10 +75,13 @@ public class SignUp extends AppCompatActivity {
         Intent login = new Intent(this, Login.class);
 //        Intent login = new Intent(this, Face.class);
         startActivity(login);
+        finish();
     }
 
     public void button_login_signup_clicked(View view){
+
         Intent login = new Intent(this, Login.class);
         startActivity(login);
+        finish();
     }
 }
