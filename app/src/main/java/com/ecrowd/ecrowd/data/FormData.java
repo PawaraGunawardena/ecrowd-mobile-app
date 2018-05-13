@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.ecrowd.ecrowd.data.dbserver.DBServerHelper;
+import com.ecrowd.ecrowd.data.dbserver.FormGeneralServer;
 import com.ecrowd.ecrowd.data.model.Form;
+import com.ecrowd.ecrowd.data.model.FormGeneral;
 import com.ecrowd.ecrowd.data.model.User;
 import com.ecrowd.ecrowd.data.schema.DynamicFormTableSchema;
 import com.ecrowd.ecrowd.data.schema.IFormPartialSchema;
@@ -24,25 +27,48 @@ public class FormData {
     private String TAG= "WAAAAAAAAAAR";
     private DynamicFormTableSchema formTableSchema;
 
+    DBServerHelper dbServerHelper;
+    FormGeneralServer formGeneralServer;
 
     public FormData(Context context) {
         crowdDatabaseHelper = new DBHelper(context);
         db = crowdDatabaseHelper.getWritableDatabase();
         formTableSchema = new DynamicFormTableSchema();
+
+        dbServerHelper = new DBServerHelper();
+        formGeneralServer = new FormGeneralServer();
     }
 
-    public void addForm(Form form) {
-        ContentValues values_table_form = new ContentValues();
+    public void addForm(Form form, int sync_status) {
+//        Log.i(TAG,"going to insert :) :)");
+//        String serverQuery = formGeneralServer.getFormGeneralString(form);
+//        Log.i(TAG,"server query :) "+serverQuery );
+//        Boolean insertedToTheServer = dbServerHelper.saveToAppServer(form , context);
+//        Log.i(TAG,"Inserted to the server :) ? "+insertedToTheServer );
 
+        ContentValues values_table_form = new ContentValues();
         values_table_form.put(IFormSchema.FORM_NAME, form.getForm_name());
         values_table_form.put(IFormSchema.TABLE_NAME, form.getTable_name());
         values_table_form.put(IFormSchema.STARTING_DATE, form.getStarting_date());
         values_table_form.put(IFormSchema.CLOSING_DATE, form.getClosing_date());
         values_table_form.put(IFormSchema.USER_NAME, form.getUsername());
 
-//        String query = "Insert into form "
-        Log.i(TAG,"Form goinfg to insert :) :)");
-        db.insert(IFormSchema.TABLE_FORM, null, values_table_form);
+//        if(insertedToTheServer==true){
+//            values_table_form.put(IFormSchema.SYNC_STATUS, 1);
+//            db.insert(IFormSchema.TABLE_FORM, null, values_table_form);
+//            Log.i(TAG,"Form insert after server call :) :)");
+//        }else{
+            values_table_form.put(IFormSchema.SYNC_STATUS, sync_status);
+            db.insert(IFormSchema.TABLE_FORM, null, values_table_form);
+            Log.i(TAG,"Form insert without server call :) :)");
+//        }
+
+
+
+
+
+
+
         Log.i(TAG,"Form Inserted Really:) :)");
 //        addFormPartials(Form form);
         addFormPartials(form);
@@ -54,6 +80,10 @@ public class FormData {
         Log.i(TAG,"Going to add the table");
         addTable(query);
         Log.i(TAG,"Created the table");
+    }
+
+    public void saveToLocalStorage(){
+
     }
 
     public void addFormPartials(Form form) {

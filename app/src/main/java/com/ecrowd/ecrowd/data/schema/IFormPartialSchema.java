@@ -12,7 +12,7 @@ public interface IFormPartialSchema {
     String ATTRIBUTE_TITLE = "attribute_title";
     String ATTRIBUTE_TYPE = "attribute_type";
     String MOBILITY = "mobility";
-
+    String SYNC_STATUS = "sync_status";
 
     String TABLE_FORM_CREATE = "CREATE TABLE IF NOT EXISTS "+
             TABLE_FORM +" ("+
@@ -20,7 +20,8 @@ public interface IFormPartialSchema {
             FORM_NAME+ " VARCHAR(50) ," +
             ATTRIBUTE_TITLE+" VARCHAR(50) ,"+
             ATTRIBUTE_TYPE+" VARCHAR(50) ,"+
-            MOBILITY+" VARCHAR(50) "+
+            MOBILITY+" VARCHAR(50) ,"+
+            SYNC_STATUS+" INTEGER "+
             ");";
 
     public String[] FORM_COLUMNS = new String[] {
@@ -29,7 +30,8 @@ public interface IFormPartialSchema {
             FORM_NAME,
             ATTRIBUTE_TITLE,
             ATTRIBUTE_TYPE,
-            MOBILITY
+            MOBILITY,
+            SYNC_STATUS
     };
 
     public String SQL_DELETE_TABLE = "DROP TABLE IF EXISTS "+TABLE_FORM;
