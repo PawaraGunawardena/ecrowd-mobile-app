@@ -11,14 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="821bb796-272b-4e13-8282-ffa8a1bf6943" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/DBServerHelper.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/FormGeneralServer.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/MySingleton.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/NetworkMonitor.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/FormData.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/FormData.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/schema/IFormPartialSchema.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/schema/IFormPartialSchema.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/schema/IFormSchema.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/schema/IFormSchema.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/ui/DynamicFormCreate.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/ui/DynamicFormCreate.java" />
     </list>
     <ignored path="eCrowd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,18 +61,38 @@
       <file leaf-file-name="FormGeneralServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/FormGeneralServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-646">
+            <state relative-caret-position="-383">
               <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynamicFormCreate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DynamicFormCreate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/ui/DynamicFormCreate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-374">
               <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NetworkMonitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/NetworkMonitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySingleton.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/MySingleton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -2680,7 +2697,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526012030629</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Survey form save in sqlite and mysql databases">
+      <created>1526249227268</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1526249227268</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2694,6 +2718,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="0" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.4969743" order="6" side_tool="false" content_ui="tabs" />
@@ -2759,7 +2784,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/tab1_contacts.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/schema/IUserSchema.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3060,14 +3084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/MySingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/model/FormPartial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -3091,14 +3107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/DBServerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="89" column="95" lean-forward="false" selection-start-line="89" selection-start-column="95" selection-end-line="89" selection-end-column="95" />
           <folding />
         </state>
       </provider>
@@ -3135,18 +3143,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/ui/DynamicFormCreate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/FormGeneralServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
+        <state relative-caret-position="-383">
           <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/ui/DynamicFormCreate.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/NetworkMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="102" column="43" lean-forward="true" selection-start-line="102" selection-start-column="43" selection-end-line="102" selection-end-column="43" />
+        <state relative-caret-position="34">
+          <caret line="2" column="27" lean-forward="false" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/DBServerHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="89" column="95" lean-forward="false" selection-start-line="89" selection-start-column="95" selection-end-line="89" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ecrowd/ecrowd/data/dbserver/MySingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
