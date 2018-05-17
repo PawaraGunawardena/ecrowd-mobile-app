@@ -31,8 +31,9 @@ public class UserData {
         values.put(IUserSchema.COLUMN_PASSWORD, user.getPassword());
         values.put(IUserSchema.COLUMN_FIRST_NAME, user.getFirstname());
         values.put(IUserSchema.COLUMN_LAST_NAME, user.getLastname());
-
+        Log.i(TAG, "SUCESS Happening");
         db.insert(IUserSchema.TABLE_USER, null, values);
+        Log.i(TAG, "SUCESS Happen");
     }
 
 

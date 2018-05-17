@@ -1,103 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ecrowd.ecrowd.ui.Login"
-    android:background="#2787A4">
+    android:background="@drawable/log_back">
 
 
-    <ScrollView
-        android:layout_width="334dp"
-        android:layout_height="559dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
 
-        <RelativeLayout
-            android:layout_width="372dp"
-            android:layout_height="400dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="6dp">
+    <LinearLayout
+        android:paddingTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
             <EditText
                 android:id="@+id/editText_username_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="136dp"
-                android:ems="10"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:background="@drawable/edittextstyle"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:hint="Username"
                 android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="69dp"
-                android:layout_alignRight="@+id/button_login_login"
-                android:layout_alignEnd="@+id/button_login_login" />
 
+                />
+            <!--<EditText-->
+                <!--android:id="@+id/editText_username_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_marginTop="136dp"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textPersonName"-->
+                <!--tools:layout_editor_absoluteX="31dp"-->
+                <!--tools:layout_editor_absoluteY="69dp"-->
+                <!--android:layout_alignRight="@+id/button_login_login"-->
+                 <!--/>-->
             <EditText
                 android:id="@+id/editText_password_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editText_username_login"
-                android:layout_alignStart="@+id/editText_username_login"
-                android:layout_centerVertical="true"
-                android:ems="10"
-                android:inputType="textPassword" />
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:background="@drawable/edittextstyle"
+                android:layout_marginTop="10dp"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword"
+                />
 
-            <TextView
-                android:id="@+id/textView_password_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/textView_Username_Login"
-                android:layout_alignStart="@+id/textView_Username_Login"
-                android:layout_centerVertical="true"
-                android:text="@string/TextView_password_login" />
+            <!--<EditText-->
+                <!--android:id="@+id/editText_password_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignLeft="@+id/editText_username_login"-->
+                <!--android:layout_alignStart="@+id/editText_username_login"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textPassword" />-->
 
-            <TextView
-                android:id="@+id/textView_Username_Login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textView_Username_Login"
-                tools:ignore="RelativeOverlap"
-                android:layout_alignBaseline="@+id/editText_username_login"
-                android:layout_alignBottom="@+id/editText_username_login"
-                android:layout_alignLeft="@+id/button_signup_login"
-                android:layout_alignStart="@+id/button_signup_login" />
+            <!--<TextView-->
+                <!--android:id="@+id/textView_password_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignLeft="@+id/textView_Username_Login"-->
+                <!--android:layout_alignStart="@+id/textView_Username_Login"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:text="@string/TextView_password_login" />-->
 
-            <TextView
-                android:id="@+id/textViewTitle_Login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="37dp"
-                android:text="@string/textViewTitle_Login" />
+            <!--<TextView-->
+                <!--android:id="@+id/textView_Username_Login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/textView_Username_Login"-->
+                <!--tools:ignore="RelativeOverlap"-->
+                <!--android:layout_alignBaseline="@+id/editText_username_login"-->
+                <!--android:layout_alignBottom="@+id/editText_username_login"-->
+                <!--android:layout_alignLeft="@+id/button_signup_login"-->
+                <!--android:layout_alignStart="@+id/button_signup_login" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/textViewTitle_Login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginTop="37dp"-->
+                <!--android:text="@string/textViewTitle_Login" />-->
 
             <Button
                 android:id="@+id/button_login_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="22dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_toEndOf="@+id/textViewTitle_Login"
-                android:layout_toRightOf="@+id/textViewTitle_Login"
-                android:onClick="clicked_login"
-                android:text="@string/button_login_login" />
+                android:textColor="#fff"
+                android:background="@drawable/buttonstyleselector"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:text="@string/button_login_login"
+                android:layout_height="60dp"
+                android:onClick="clicked_login"/>
 
+            <!--<Button-->
+                <!--android:id="@+id/button_login_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginBottom="22dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:layout_toEndOf="@+id/textViewTitle_Login"-->
+                <!--android:layout_toRightOf="@+id/textViewTitle_Login"-->
+                <!--android:onClick="clicked_login"-->
+                <!--android:text="@string/button_login_login" />-->
             <Button
                 android:id="@+id/button_signup_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="64dp"
-                android:layout_toLeftOf="@+id/textViewTitle_Login"
-                android:layout_toStartOf="@+id/textViewTitle_Login"
-                android:onClick="clicked_create_account"
-                android:text="@string/button_signup_login" />
-        </RelativeLayout>
-    </ScrollView>
+                android:textColor="#fff"
+                android:background="@drawable/buttonstyleselector"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:text="@string/button_signup_login"
+                android:layout_height="60dp"
+                android:onClick="clicked_create_account"/>
+            <!--<Button-->
+                <!--android:id="@+id/button_signup_login"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginBottom="64dp"-->
+                <!--android:layout_toLeftOf="@+id/textViewTitle_Login"-->
+                <!--android:layout_toStartOf="@+id/textViewTitle_Login"-->
+                <!--android:onClick="clicked_create_account"-->
+                <!--android:text="@string/button_signup_login" />-->
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

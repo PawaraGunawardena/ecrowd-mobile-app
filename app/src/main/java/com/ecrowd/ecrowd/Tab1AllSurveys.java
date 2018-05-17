@@ -1,7 +1,9 @@
 package com.ecrowd.ecrowd;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,11 +46,11 @@ public class Tab1AllSurveys extends Fragment {
     FormData form_data;
     ListAdapter listAdapter;
     private String selected_value;
-    private FormDataAccess formDataAccess;
+    private FormDataAccess formDataAccess;//to get form partial data
 
     FormGeneral form_general;
     FormGeneralData form_general_infomation_supplier;
-
+    BroadcastReceiver broadcastReceiver;
     public Tab1AllSurveys() {
 
     }
@@ -66,6 +68,13 @@ public class Tab1AllSurveys extends Fragment {
 
         form_general = new FormGeneral();
         form_general_infomation_supplier = new FormGeneralData(passingContext);
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        };
 
         try {
             listView = (ListView) rootView.findViewById(R.id.id_listView_tab1);
@@ -128,5 +137,13 @@ public class Tab1AllSurveys extends Fragment {
         }
         return rootView;
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+////        registerReceiver(broadcastReceiver, new IntentFilter(DbContract.UI_UPDATE_BROADCAST)):
+//    }
+
+
 }
 

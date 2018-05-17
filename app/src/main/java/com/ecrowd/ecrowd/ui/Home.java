@@ -1,5 +1,6 @@
 package com.ecrowd.ecrowd.ui;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,13 +19,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ecrowd.ecrowd.HomeActivityPresenter;
+import com.ecrowd.ecrowd.HomeActivityView;
 import com.ecrowd.ecrowd.R;
 import com.ecrowd.ecrowd.Tab1AllSurveys;
 import com.ecrowd.ecrowd.Tab2MySurveys;
 import com.ecrowd.ecrowd.Tab3CollectedData;
 import com.ecrowd.ecrowd.data.model.User;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements HomeActivityView {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -42,14 +45,21 @@ public class Home extends AppCompatActivity {
     public User user;
     private ViewPager mViewPager;
     String TAG = "user";
+    BroadcastReceiver broadcastReceiver;
+
+    //testing
+    HomeActivityPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
+        presenter = new HomeActivityPresenter(this);
+                // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -77,6 +87,14 @@ public class Home extends AppCompatActivity {
         Intent i = getIntent();
         user = (User) i.getSerializableExtra("UserAccount");
         Log.i(TAG,user.getUsername()+" home current users username");
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        };
+
     }
 
 
@@ -119,6 +137,32 @@ public class Home extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public Fragment checkClickedTagItem(int position) {
+
+        switch (position) {
+            case 0:
+                Tab1AllSurveys tab1 = new Tab1AllSurveys(user);
+                return tab1;
+            case 1:
+                Tab2MySurveys tab2 = new Tab2MySurveys(user);
+                return tab2;
+            case 2:
+                Tab3CollectedData tab3 = new Tab3CollectedData(user);
+                return tab3;
+            default:
+                return null;
+
+        }
+
+    }
+
+    @Override
+    public CharSequence checkPageTitle(int position) {
+        return presenter.launchGetSelectedItemSeqeunceName(position);
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -134,8 +178,11 @@ public class Home extends AppCompatActivity {
             super(fm);
         }
 
+
         @Override
         public Fragment getItem(int position) {
+
+//            return presenter.launchTagItemChange(position);
             switch (position) {
                 case 0:
                     Tab1AllSurveys tab1 = new Tab1AllSurveys(user);
@@ -170,5 +217,9 @@ public class Home extends AppCompatActivity {
             }
             return null;
         }
+//        @Override
+
     }
+
+
 }

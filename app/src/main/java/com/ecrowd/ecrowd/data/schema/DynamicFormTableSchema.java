@@ -12,8 +12,9 @@ public class DynamicFormTableSchema {
 
     ArrayList<String> attributes ;
     String formTableName;
-String TAG="TAAAAAAAAAAAAABLE";
+    String TAG="TAAAAAAAAAAAAABLE";
     String query ="" ;
+
     public DynamicFormTableSchema(ArrayList<String> attributes, String formName) {
         this.attributes = attributes;
         this.formTableName = formName;
@@ -44,7 +45,7 @@ String TAG="TAAAAAAAAAAAAABLE";
 
     public String getQueryCreateDynamicFormTable(){
         query += "CREATE TABLE IF NOT EXISTS "+
-                formTableName+" (username VARCHAR(50) PRIMARY KEY,";
+                formTableName+" (username VARCHAR(50) PRIMARY KEY, sync_status INTEGER, ";
 
         for(int i=0; i< attributes.size(); i++){
             query +=attributes.get(i)+" VARCHAR(50),";

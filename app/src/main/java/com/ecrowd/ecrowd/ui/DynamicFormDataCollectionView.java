@@ -59,7 +59,7 @@ public class DynamicFormDataCollectionView extends AppCompatActivity {
                 RelativeLayout.LayoutParams.FILL_PARENT);
 
         ArrayList<String> typed_values = dynamicFormData.getDynamicFormDataCollect(form_general, survey_partials);
-        testValues.add("Username");
+        testValues.add("Username");testValues.add("sync_status");
         for(int index = 0 ; index<survey_partials.size() ; index++){
             FormPartial current_partial = (FormPartial)survey_partials.get(index);
             testValues.add((String)current_partial.getAttribute_title());

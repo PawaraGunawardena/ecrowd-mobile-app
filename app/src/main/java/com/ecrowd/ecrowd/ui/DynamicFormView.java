@@ -1,5 +1,6 @@
 package com.ecrowd.ecrowd.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,13 +37,15 @@ public class DynamicFormView extends AppCompatActivity {
     private User user;
     private String TAG = "OOOOOOPS";
     private String TAG2 = "user";
+
+    Context context_current;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         formLayout = new RelativeLayout(this);
         formLayout.setBackgroundColor(Color.CYAN);
-
+        context_current = this;
         intent = getIntent();
         //Form Basic Information
         form_general = (FormGeneral) intent.getSerializableExtra("FormBasicInformation");
@@ -103,6 +106,10 @@ public class DynamicFormView extends AppCompatActivity {
 //                createTextView(y, instant_partial.getAttribute_title());
 //                y+=1;
                 instant_partial.setId(y);
+
+
+
+//                instant_partial.setId(y);
                 createEditText(y, instant_partial.getAttribute_title());
                 y+=1;
 
@@ -216,8 +223,8 @@ public class DynamicFormView extends AppCompatActivity {
                 }
                 DynamicFormData dynamicFormData = new DynamicFormData(survey_partials,form_general,DynamicFormView.this);
 
-                Log.e(TAG, dynamicFormData.getInsertQuery(user.getUsername(), form_general.getTable_name()));
-                dynamicFormData.insertIntoDynamicFormTable(user, form_general);
+//                Log.e(TAG, dynamicFormData.getInsertQuery(user.getUsername(), form_general.getTable_name()));
+                dynamicFormData.insertIntoDynamicFormTable(user, form_general, context_current);
                 Intent home = new Intent(DynamicFormView.this, Home.class);
                 home.putExtra("UserAccount", user);
                 startActivity(home);

@@ -25,6 +25,7 @@ public class FormData {
     private DBHelper crowdDatabaseHelper;
     private SQLiteDatabase db;
     private String TAG= "WAAAAAAAAAAR";
+    private String TAG1= "BAwwa";
     private DynamicFormTableSchema formTableSchema;
 
     DBServerHelper dbServerHelper;
@@ -71,7 +72,7 @@ public class FormData {
 
         Log.i(TAG,"Form Inserted Really:) :)");
 //        addFormPartials(Form form);
-        addFormPartials(form);
+        addFormPartials(form, sync_status);
         formTableSchema.setAttributes(form.getAttribute_titles());
         formTableSchema.setFormTableName(form.getTable_name());
 
@@ -86,7 +87,7 @@ public class FormData {
 
     }
 
-    public void addFormPartials(Form form) {
+    public void addFormPartials(Form form, int sync_status) {
 
         Log.i(TAG,"Partial goig to insert");
         Log.i(TAG,"form.getAttribute_titles().size() "+form.getAttribute_titles().size());
@@ -102,6 +103,7 @@ public class FormData {
             values_table_form_partial.put(IFormPartialSchema.ATTRIBUTE_TITLE, form.getAttribute_titles().get(i));
             values_table_form_partial.put(IFormPartialSchema.ATTRIBUTE_TYPE, form.getAttribute_type().get(i));
             values_table_form_partial.put(IFormPartialSchema.MOBILITY, "false");
+            values_table_form_partial.put(IFormPartialSchema.SYNC_STATUS, sync_status);
 //            values_table_form_partial.put(IFormPartialSchema.DEFAULT_VALUE, "testing");
 
             db.insert(IFormPartialSchema.TABLE_FORM, null, values_table_form_partial);
@@ -189,6 +191,23 @@ public class FormData {
         return formName;
     }
 
+    public Cursor getMaxTimeStamp(){
+        Log.i(TAG1, "Going to database");
+        Cursor form_max_date = null;
+        try {
+            String query = "SELECT " + IFormSchema.INSERTED_DATE + " FROM " + IFormSchema.TABLE_FORM+" ;";
+            Log.i(TAG1, "Query : "+query);
+            form_max_date = db.rawQuery(query, null);
+        }catch(Exception e){
+            Log.i(TAG1, e.getMessage());
+        }
+        if(form_max_date==null){
+            Log.i(TAG1, "Null cursor database");
+        }
+        Log.i(TAG1, "GAfter database");
+        return form_max_date;
+    }
+
     public Cursor getFormNameByUser(String username){
         String query = "SELECT * FROM "+ IFormSchema.TABLE_FORM
                 +" WHERE form.username = '"+username+"'"
@@ -205,6 +224,26 @@ public class FormData {
 
 
         return form;
+    }
+
+    public void updateSyncStatus(Form form, int sync_status){
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("sync_status",sync_status);
+
+        String selection = "form_name LIKE ?";
+
+        String[] selection_args = {
+                form.getForm_name()
+        };
+
+        db.update(
+                "form",
+                contentValues,
+                selection ,
+                selection_args
+        );
+
     }
 
 }
