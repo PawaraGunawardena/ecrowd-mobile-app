@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity implements LoginActivityView {
     private String password;
 
     private UserData userDataabseConnectvity;
-    private User user ;
+    private User user;
     String TAG = "Lion";
 
     //attributes to take shhared preferene to make sessions
@@ -59,52 +59,50 @@ public class Login extends AppCompatActivity implements LoginActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-            presenter = new LoginActivityPresenter(this);
+        presenter = new LoginActivityPresenter(this);
 
-            username_typed = (EditText) findViewById(R.id.editText_username_login);
-            password_typed= (EditText) findViewById(R.id.editText_password_login);
+        username_typed = (EditText) findViewById(R.id.editText_username_login);
+        password_typed = (EditText) findViewById(R.id.editText_password_login);
 
-            sharedPreferences = getSharedPreferences("userInfo",MODE_PRIVATE);
-            username_saved_shared = sharedPreferences.getString("username_shared", "");
-            password_saved_shared = sharedPreferences.getString("password_shared", "");
-
-
-            userDataabseConnectvity = new UserData(this);
-            Log.i(TAG,"Created");
+        sharedPreferences = getSharedPreferences("userInfo", MODE_PRIVATE);
+        username_saved_shared = sharedPreferences.getString("username_shared", "");
+        password_saved_shared = sharedPreferences.getString("password_shared", "");
 
 
+        userDataabseConnectvity = new UserData(this);
+        Log.i(TAG, "Created");
 
 
-            broadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
 
-                }
-            };
-
-            if(username_saved_shared.length()>0 && password_saved_shared.length()>0){
-                Intent home = new Intent(this, Home.class);
-                user  = (User)userDataabseConnectvity.getUser(username_saved_shared);
-
-                home.putExtra("UserAccount", user);
-                Log.i(TAG,user.getUsername()+" passing users username");
-                startActivity(home);
-                finish();
             }
+        };
 
+        if (username_saved_shared.length() > 0 && password_saved_shared.length() > 0) {
+            Intent home = new Intent(this, Home.class);
+            user = (User) userDataabseConnectvity.getUser(username_saved_shared);
+
+            home.putExtra("UserAccount", user);
+            Log.i(TAG, user.getUsername() + " passing users username");
+            startActivity(home);
+            finish();
         }
 
+    }
 
-    public void clicked_login(View view){
+
+    public void clicked_login(View view) {
         user_name = username_typed.getText().toString();
         password = password_typed.getText().toString();
-        Log.i(TAG,"Usrr is the "+user_name);
+        Log.i(TAG, "Usrr is the " + user_name);
 
-        if(checkNetworkConnection(this)) {
-            Log.i(TAG,"Internet works "+user_name);
+        if (checkNetworkConnection(this)) {
+            Log.i(TAG, "Internet works " + user_name);
             StringRequest stringRequest =
                     new StringRequest
                             //Start of the constructor paranthesis - StringRequest
@@ -114,24 +112,24 @@ public class Login extends AppCompatActivity implements LoginActivityView {
                                         @Override
                                         public void onResponse(String response) {
                                             JSONObject jsonObject = null;
-                                            Log.i(TAG,"Tr y to get response "+user_name);
+                                            Log.i(TAG, "Tr y to get response " + user_name);
                                             try {
                                                 jsonObject = new JSONObject(response);
                                             } catch (Exception e) {
-                                                Log.i(TAG, e.getMessage()+" JSON response "+response);
+                                                Log.i(TAG, e.getMessage() + " JSON response " + response);
                                             }
 
 //                                            String Response = null;
-                                            boolean success=false;
+                                            boolean success = false;
                                             try {
 //                                                JSONObject jsonResponse = new JSONObject(response);
                                                 success = jsonObject.getBoolean("success");
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
-                                                Log.i(TAG, e.getMessage()+"SUCESS");
+                                                Log.i(TAG, e.getMessage() + "SUCESS");
                                             }
 
-                                            if (success== true) {
+                                            if (success == true) {
 //                                                        saveToLocalStorage(name, DbContact.SYNC_STATUS_OK);
 
                                                 try {
@@ -160,24 +158,23 @@ public class Login extends AppCompatActivity implements LoginActivityView {
                                                         Log.i(TAG, "password1 " + password1);
                                                     }
 
-                                                        SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-                                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                        editor.putString("username_shared", user_name);
-                                                        editor.putString("password_shared", password);
-                                                        editor.apply();
+                                                    SharedPreferences sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                    editor.putString("username_shared", user_name);
+                                                    editor.putString("password_shared", password);
+                                                    editor.apply();
 
-                                                        Intent home = new Intent(Login.this, Home.class);
-                                                        home.putExtra("UserAccount", user);
-                                                        Log.i(TAG, user.getUsername() + " passing users username");
+                                                    Intent home = new Intent(Login.this, Home.class);
+                                                    home.putExtra("UserAccount", user);
+                                                    Log.i(TAG, user.getUsername() + " passing users username");
 
-                                                        startActivity(home);
+                                                    startActivity(home);
 //                                                        presenter.launchHomePageBtnClicked(Home.class);
-                                                        finish();
-
+                                                    finish();
 
 
                                                 } catch (JSONException e) {
-                                                    Log.i(TAG, " is the error "+e.getMessage());
+                                                    Log.i(TAG, " is the error " + e.getMessage());
                                                 }
 
 
@@ -199,7 +196,7 @@ public class Login extends AppCompatActivity implements LoginActivityView {
                                         public void onErrorResponse(VolleyError error) {
 
                                             Log.i(TAG, "Response not 1");
-                                            Log.i(TAG, "Response not 1"+error.getMessage());
+                                            Log.i(TAG, "Response not 1" + error.getMessage());
                                         }
                                     }
                             )
@@ -215,7 +212,7 @@ public class Login extends AppCompatActivity implements LoginActivityView {
                             params.put("password", password);
 //                            params.put("role", "user");
 
-                            Log.i(TAG, "params "+user_name+ " Pass "+ password);
+                            Log.i(TAG, "params " + user_name + " Pass " + password);
                             return params;
 
                         }
@@ -235,8 +232,6 @@ public class Login extends AppCompatActivity implements LoginActivityView {
         }
 
 
-
-
 //            if (user.getPassword().equals(password)) {
 //
 //            } else {
@@ -244,15 +239,6 @@ public class Login extends AppCompatActivity implements LoginActivityView {
 //                Log.i(TAG, user.getPassword() + " db password");
 //                //Log.i(TAG,password);
 //            }
-
-
-
-
-
-
-
-
-
 
 
 //        final String username_server = user_name;
@@ -318,12 +304,10 @@ public class Login extends AppCompatActivity implements LoginActivityView {
 //                    .create()
 //                    .show();
 //        }
-        }
+    }
 
 
-
-
-    public void clicked_create_account(View view){
+    public void clicked_create_account(View view) {
 //        Intent signUp = new Intent(this, SignUp.class);
 //        startActivity(signUp);
 
@@ -345,14 +329,13 @@ public class Login extends AppCompatActivity implements LoginActivityView {
         unregisterReceiver(broadcastReceiver);
     }
 
-    public boolean checkNetworkConnection(Context context){
+    public boolean checkNetworkConnection(Context context) {
         ConnectivityManager connectivityManager =
-                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return (networkInfo!=null && networkInfo.isConnected());
+        return (networkInfo != null && networkInfo.isConnected());
     }
-
 
 
     //For test

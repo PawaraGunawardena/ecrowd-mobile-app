@@ -85,6 +85,7 @@ public class HomeActivityPresenterTest {
         Mockito.verify(view).checkPageTitle(position_current);
 
     }
+
     @Test
     public void launchGetSelectedItemSeqeunceName3() {
 //Arrange

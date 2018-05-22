@@ -117,10 +117,10 @@ public class Home extends AppCompatActivity implements HomeActivityView {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        else if (id == R.id.action_logout) {
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+        if (id == R.id.action_logout) {
             SharedPreferences preferences =getSharedPreferences("userInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.clear();
@@ -131,9 +131,9 @@ public class Home extends AppCompatActivity implements HomeActivityView {
             finish();
             return true;
         }
-        else if (id == R.id.action_profile) {
-
-        }
+//        else if (id == R.id.action_profile) {
+//
+//        }
         return super.onOptionsItemSelected(item);
     }
 

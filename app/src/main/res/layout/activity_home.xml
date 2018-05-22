@@ -10,8 +10,8 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         tools:context="com.ecrowd.ecrowd.ui.Home"
-        android:background="#2787A4">
-
+        android:background="#b3bdce">
+0
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"

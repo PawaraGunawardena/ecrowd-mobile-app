@@ -22,9 +22,11 @@ public class DBServerHelper {
 String TAG = "WAAAAAAAAAAR";
     public static final String SERVER_URL = "http://ecrowd.000webhostapp.com/ecrowdserver/formgeneral.php";
     public static final String SERVER_URL_FORM_FILL = "http://ecrowd.000webhostapp.com/ecrowdserver/formfill.php";
-    public static final String SERVER_URL_REQUEST_DATA_OF_SERVER = "http://ecrowd.000webhostapp.com/ecrowdserver/formInServer.php";
+//    public static final String SERVER_URL_REQUEST_DATA_OF_SERVER = "http://ecrowd.000webhostapp.com/ecrowdserver/formInServer.php";
     public static final String SERVER_URL_REGISTER = "http://ecrowd.000webhostapp.com/ecrowdserver/Register.php";
     public static final String SERVER_URL_LOGIN = "http://ecrowd.000webhostapp.com/ecrowdserver/Login.php";
+
+    public static final String SERVER_URL_REQUEST_DATA_OF_SERVER = "http://ecrowd.000webhostapp.com/ecrowdserver/formDetails.php";
 
     public Boolean savedToAppServer;
 

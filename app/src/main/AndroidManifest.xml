@@ -41,6 +41,20 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".data.dbserver.NetworkMonitor">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE">
+
+                </action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".data.dbserver.NetworkMonitorForDBServer">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE">
+
+                </action>
+            </intent-filter>
+        </receiver>
 
 
         <activity android:name=".ui.SignUp" />

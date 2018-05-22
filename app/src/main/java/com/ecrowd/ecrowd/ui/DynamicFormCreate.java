@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.ecrowd.ecrowd.R;
+import com.ecrowd.ecrowd.SurveyCreateActivityView;
+import com.ecrowd.ecrowd.SurveyCreatePresenter;
 import com.ecrowd.ecrowd.data.FormData;
 import com.ecrowd.ecrowd.data.dbserver.DBServerHelper;
 import com.ecrowd.ecrowd.data.dbserver.FormGeneralServer;
@@ -36,7 +38,7 @@ import java.util.Map;
 
 import static com.ecrowd.ecrowd.R.id.text_fieldTitle_dynamicFormCreate;
 
-public class DynamicFormCreate extends AppCompatActivity {
+public class DynamicFormCreate extends AppCompatActivity implements SurveyCreateActivityView {
 
     ArrayList<String> listItems = new ArrayList<>();
     ArrayAdapter<String> adapter;
@@ -46,11 +48,13 @@ public class DynamicFormCreate extends AppCompatActivity {
     ArrayList<String> userFieldTypeList = new ArrayList<>();
     String TAG = "Error";
     User user;
-
+SurveyCreatePresenter presenter;
 
     FormGeneralServer formGeneralServer; // to get queries URL to address the Database Server
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        presenter = new SurveyCreatePresenter(this);
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_dynamic_form_create);
         super.onCreate(savedInstanceState);
@@ -236,11 +240,36 @@ public class DynamicFormCreate extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void submitWidgetItem() {
+    }
+
     public boolean checkNetworkConnection(){
+//        ConnectivityManager connectivityManager =
+//                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+//
+//        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+//        return (networkInfo!=null && networkInfo.isConnected());
+        return presenter.lanchCheckNetworkConnection();
+    }
+
+    @Override
+    public boolean checkNetworkConnectionTriggered() {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return (networkInfo!=null && networkInfo.isConnected());
     }
+
+    @Override
+    public void submitDynamicFormTriggered(Class activity) {
+        Log.i(TAG, "Form paased to inser :) :)");
+        Intent home = new Intent(this, Home.class);
+
+    }
+
+
+
+
 }

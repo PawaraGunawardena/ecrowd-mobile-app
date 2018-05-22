@@ -41,7 +41,7 @@ public class NetworkMonitorForDBServer extends  BroadcastReceiver{
     String TAG = "BAwwa";
 
     ArrayList<Integer> times_stamp_array = new ArrayList<>();
-    int max_timestamp;
+    int max_timestamp = 0;
 
     @Override
     public void onReceive(final Context context, Intent intent) {
@@ -113,22 +113,40 @@ public class NetworkMonitorForDBServer extends  BroadcastReceiver{
 
                     Log.i(TAG, "Before all the stuffs sync status 2 "+max_timestamp);
                     final int finalSync_status = max_timestamp;
+
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, DBServerHelper.SERVER_URL_REQUEST_DATA_OF_SERVER,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
+                                    boolean success=false;
                                     try {
                                         JSONObject jsonObject = new JSONObject(response);
-                                        String Response = jsonObject.getString("response");
-                                        if(Response.equals("OK")){
+                                        success = jsonObject.getBoolean("success");
+//                                        String Response = jsonObject.getString("response");
+                                        if(success== true){
 //                                            dbHelper.updateLocalDatabase(Name, DbContact.SYNC_STATUS_OK, database);
 //                                            form_data.updateSyncStatus(dynamcForm, 1);
 //                                            context.sendBroadcast(new Intent(DbContract.UI_UPDATE_BROADCAST));
+
                                             Log.i(TAG, "Okay Bro");
+
+//                                            JSONObject form = jsonObject.getJSONObject("0");
+
+
+//                                            String table_name = form.getString("table_name");
+                                            String username = jsonObject.getString("username");
+//                                            String inserted_date = jsonObject.getString("inserted_date");
+
+//                                            Log.i(TAG, table_name);
+
+//                                            Log.i(TAG, form);
+                                            Log.i(TAG, username+" IS mY NAME");
+
 
                                         }else{
                                             Log.i(TAG, "Yeah dead boy Bro can");
-                                            Log.i(TAG, Response.valueOf(2));
+//                                            Log.i(TAG, Response.valueOf(2));
                                             Log.i(TAG, "Yeah dead boy Bro");
                                         }
 
