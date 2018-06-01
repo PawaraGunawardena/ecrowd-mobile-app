@@ -19,14 +19,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DBServerHelper {
-String TAG = "WAAAAAAAAAAR";
+//String TAG = "WAAAAAAAAAAR";
     public static final String SERVER_URL = "http://ecrowd.000webhostapp.com/ecrowdserver/formgeneral.php";
     public static final String SERVER_URL_FORM_FILL = "http://ecrowd.000webhostapp.com/ecrowdserver/formfill.php";
 //    public static final String SERVER_URL_REQUEST_DATA_OF_SERVER = "http://ecrowd.000webhostapp.com/ecrowdserver/formInServer.php";
     public static final String SERVER_URL_REGISTER = "http://ecrowd.000webhostapp.com/ecrowdserver/Register.php";
     public static final String SERVER_URL_LOGIN = "http://ecrowd.000webhostapp.com/ecrowdserver/Login.php";
-
     public static final String SERVER_URL_REQUEST_DATA_OF_SERVER = "http://ecrowd.000webhostapp.com/ecrowdserver/formDetails.php";
+    public static final String REGISTER_REQUEST_URL = "http://ecrowd.000webhostapp.com/ecrowdserver/Register.php";
+    public static final String LOGIN_REQUEST_URL = "http://ecrowd.000webhostapp.com/ecrowdserver/Login.php";
 
     public Boolean savedToAppServer;
 
@@ -48,9 +49,9 @@ String TAG = "WAAAAAAAAAAR";
 
     public Boolean saveToAppServer(final String query, Context context){
 
-        Log.i(TAG,"server query at DBServerHelper:) username "+query );
+//        Log.i(TAG,"server query at DBServerHelper:) username "+query );
         if (checkNetworkConnection( context)) {
-            Log.i(TAG,"NetworkWorks " );
+//            Log.i(TAG,"NetworkWorks " );
 
             StringRequest stringRequest =
                     new StringRequest
@@ -76,11 +77,11 @@ String TAG = "WAAAAAAAAAAR";
 
                                             if (Response.equals("OK")) {
 //                                                        saveToLocalStorage(name, DbContact.SYNC_STATUS_OK);
-                                                Log.i(TAG, "OK ");
+//                                                Log.i(TAG, "OK ");
                                                 savedToAppServer = true;
                                             } else {
 //                                                        saveToLocalStorage(name, DbContact.SYNC_STATUS_FAILED);
-                                                Log.i(TAG, "Response not recieved as OK");
+//                                                Log.i(TAG, "Response not recieved as OK");
                                                 savedToAppServer = false;
                                             }
 
@@ -92,7 +93,8 @@ String TAG = "WAAAAAAAAAAR";
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
 //                                                saveToLocalStorage(name, DbContact.SYNC_STATUS_FAILED);
-                                            savedToAppServer = false;Log.i(TAG, "Response not 1");
+                                            savedToAppServer = false;
+//                                            Log.i(TAG, "Response not 1");
                                         }
                                     }
                             )
@@ -106,7 +108,7 @@ String TAG = "WAAAAAAAAAAR";
                             params.put("query", query);
 //                            params.put("table_name", form.getTable_name());
 //                            params.put("username", form.getUsername());
-                            Log.i(TAG,"Inside the String request " );
+//                            Log.i(TAG,"Inside the String request " );
 //                            Log.i(TAG,"Inside the String request "+name );
                             return params;
 
@@ -115,13 +117,13 @@ String TAG = "WAAAAAAAAAAR";
                     };
 
             MySingleton.getInstance(context).addToRequestQue(stringRequest);
-            Log.i(TAG,"Before else " );
+//            Log.i(TAG,"Before else " );
         }else{
 //            saveToLocalStorage(name, DbContact.SYNC_STATUS_FAILED);
             savedToAppServer=false;
-            Log.i(TAG, "Response not 2");
+//            Log.i(TAG, "Response not 2");
         }
-        Log.i(TAG,"saved or not at DBServerHelper:) "+savedToAppServer );
+//        Log.i(TAG,"saved or not at DBServerHelper:) "+savedToAppServer );
         return savedToAppServer;
     }
 }

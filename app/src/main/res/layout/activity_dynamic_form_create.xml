@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ecrowd.ecrowd.ui.DynamicFormCreate"
-    android:background="#2787A4">
+    android:background="@drawable/back">
 
 
     <RelativeLayout
@@ -16,7 +16,7 @@
 
         <Spinner
             android:id="@+id/spinner_fieldType_dynamicFormCreate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:layout_below="@+id/text_fieldTitle_dynamicFormCreate"
@@ -25,58 +25,64 @@
 
         <TextView
             android:id="@+id/label_title_dynamic_form_create"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_title_dynamic_form_create"
             android:layout_marginTop="23dp"
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/btn_submitField_dynamicFormCreate"
-            android:layout_alignEnd="@+id/btn_submitField_dynamicFormCreate" />
+            android:layout_alignEnd="@+id/btn_submitField_dynamicFormCreate"
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/btn_submitForm_dynamicFormCreate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="45dp"
             android:text="@string/btn_submitForm_dynamicFormCreate"
-            android:onClick="submit_dynamic_form"/>
+            android:onClick="submit_dynamic_form"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/text_titleSurvey_dynamicFormCreate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/label_title_dynamic_form_create"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="13dp"
             android:ems="10"
             android:hint="@string/text_titleSurvey_dynamicFormCreate"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#fff"
+            android:textColorHint="#fff"/>
 
         <Button
             android:id="@+id/btn_submitField_dynamicFormCreate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_submitField_dynamicFormCreate"
             android:layout_marginTop="63dp"
             android:layout_alignTop="@+id/spinner_fieldType_dynamicFormCreate"
             android:layout_alignLeft="@+id/btn_submitForm_dynamicFormCreate"
             android:layout_alignStart="@+id/btn_submitForm_dynamicFormCreate"
-            android:onClick="submit_field_clicked"/>
+            android:onClick="submit_field_clicked"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/label_addField_dynamicFormCreate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_addField_dynamicFormCreate"
             android:layout_marginTop="27dp"
             android:layout_below="@+id/text_titleSurvey_dynamicFormCreate"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/text_fieldTitle_dynamicFormCreate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/text_titleSurvey_dynamicFormCreate"
             android:layout_alignStart="@+id/text_titleSurvey_dynamicFormCreate"
@@ -84,7 +90,9 @@
             android:layout_marginTop="22dp"
             android:ems="10"
             android:hint="@string/text_fieldTitle_dynamicFormCreate"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#fff"
+            android:textColorHint="#fff"/>
 
     </RelativeLayout>
 

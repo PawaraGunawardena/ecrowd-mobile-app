@@ -10,8 +10,8 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         tools:context="com.ecrowd.ecrowd.ui.Home"
-        android:background="#b3bdce">
-0
+    android:background="@drawable/back">
+
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -48,7 +48,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            app:backgroundTint="#02d2fc"
+            app:srcCompat="@drawable/ic_note_add"
+            tools:ignore="VectorDrawableCompat" />
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -21,10 +21,10 @@
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:background="@drawable/edittextstyle"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="Username"
+                android:hint= "Username"
                 android:inputType="textPersonName"
 
                 />
@@ -46,8 +46,8 @@
                 android:textColorHint="#fff"
                 android:background="@drawable/edittextstyle"
                 android:layout_marginTop="10dp"
-                android:layout_width="300dp"
-                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -94,12 +94,12 @@
 
             <Button
                 android:id="@+id/button_login_login"
-                android:textColor="#fff"
-                android:background="@drawable/buttonstyleselector"
+
+
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:text="@string/button_login_login"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:onClick="clicked_login"/>
 
             <!--<Button-->
@@ -116,12 +116,12 @@
                 <!--android:text="@string/button_login_login" />-->
             <Button
                 android:id="@+id/button_signup_login"
-                android:textColor="#fff"
-                android:background="@drawable/buttonstyleselector"
+
+
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:text="@string/button_signup_login"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:onClick="clicked_create_account"/>
             <!--<Button-->
                 <!--android:id="@+id/button_signup_login"-->

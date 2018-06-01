@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ecrowd.ecrowd.ui.SignUp"
-    android:background="#2787A4"
+
+    android:background="@drawable/back"
     >
 
 
@@ -23,7 +24,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="23dp"
-            android:text="@string/textView_Title_Signup" />
+            android:text="@string/textView_Title_Signup"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/textView_username_signup"
@@ -35,7 +37,8 @@
             android:layout_marginLeft="36dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="35dp"
-            android:text="@string/textView_username_signup" />
+            android:text="@string/textView_username_signup"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/textView_email_signup"
@@ -45,7 +48,8 @@
             android:layout_alignBottom="@+id/editText_email_signup"
             android:layout_toLeftOf="@+id/editText_usernme_signup"
             android:layout_toStartOf="@+id/editText_usernme_signup"
-            android:text="@string/textView_email_signup" />
+            android:text="@string/textView_email_signup"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/textView_firstname_signup"
@@ -55,7 +59,8 @@
             android:layout_alignBottom="@+id/editText_Firstname_signup"
             android:layout_alignLeft="@+id/textView_last_name_signup"
             android:layout_alignStart="@+id/textView_last_name_signup"
-            android:text="@string/textView_firstname_signup" />
+            android:text="@string/textView_firstname_signup"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/textView_last_name_signup"
@@ -65,7 +70,8 @@
             android:layout_alignBottom="@+id/editText_lastname_signup"
             android:layout_alignLeft="@+id/textView_password_signup"
             android:layout_alignStart="@+id/textView_password_signup"
-            android:text="@string/textView_lastname_signup" />
+            android:text="@string/textView_lastname_signup"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/textView_password_signup"
@@ -75,7 +81,8 @@
             android:layout_alignBottom="@+id/editText_password_signup"
             android:layout_toLeftOf="@+id/editText_usernme_signup"
             android:layout_toStartOf="@+id/editText_usernme_signup"
-            android:text="@string/textView_password_signup" />
+            android:text="@string/textView_password_signup"
+            android:textColor="#fff"/>
 
         <TextView
             android:id="@+id/textView_Confirm_password_signup"
@@ -87,7 +94,8 @@
             android:layout_marginTop="30dp"
             android:layout_toLeftOf="@+id/editText_usernme_signup"
             android:layout_toStartOf="@+id/editText_usernme_signup"
-            android:text="@string/textView_confirm_password_signup" />
+            android:text="@string/textView_confirm_password_signup"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/editText_usernme_signup"
@@ -100,7 +108,8 @@
             android:layout_toEndOf="@+id/textView_username_signup"
             android:layout_toRightOf="@+id/textView_username_signup"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/editText_email_signup"
@@ -111,7 +120,8 @@
             android:layout_below="@+id/editText_usernme_signup"
             android:layout_marginTop="14dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/editText_Firstname_signup"
@@ -122,7 +132,8 @@
             android:layout_below="@+id/editText_email_signup"
             android:layout_marginTop="12dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/editText_lastname_signup"
@@ -133,7 +144,8 @@
             android:layout_below="@+id/editText_Firstname_signup"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/editText_password_signup"
@@ -144,7 +156,8 @@
             android:layout_below="@+id/editText_lastname_signup"
             android:layout_marginTop="13dp"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="#fff"/>
 
         <EditText
             android:id="@+id/editTextconfirm_password_signup"
@@ -154,7 +167,8 @@
             android:layout_alignLeft="@+id/editText_password_signup"
             android:layout_alignStart="@+id/editText_password_signup"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/button_submit_signup"

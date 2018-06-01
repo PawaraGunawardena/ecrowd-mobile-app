@@ -46,7 +46,7 @@ public class DynamicFormDataCollectionView extends AppCompatActivity {
 //
 //
         formLayout = new RelativeLayout(this);
-        formLayout.setBackgroundColor(Color.CYAN);
+        formLayout.setBackgroundColor(Color.argb(250, 159, 226, 244));
         intent = getIntent();
         getFormSerializableData();
 

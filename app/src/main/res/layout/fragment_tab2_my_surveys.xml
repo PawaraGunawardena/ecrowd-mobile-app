@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ecrowd.ecrowd.ui.Home$PlaceholderFragment"
-    android:background="#2787A4">
+    android:background="#558fed">
 
     <ListView
         android:id="@+id/id_listView_tab2"

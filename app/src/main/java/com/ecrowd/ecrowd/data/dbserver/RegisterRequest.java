@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
-    private static final String REGISTER_REQUEST_URL = "http://ecrowd.000webhostapp.com/ecrowdserver/Register.php";
+//    private static final String REGISTER_REQUEST_URL = "http://ecrowd.000webhostapp.com/ecrowdserver/Register.php";
     private Map<String, String> params;
 
     public RegisterRequest(String username, String email, String first_name, String last_name,
                            String password, Response.Listener<String> listener) {
-        super(Method.POST, REGISTER_REQUEST_URL, listener, null);
+        super(Method.POST, DBServerHelper.REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
 
         params.put("username", username);

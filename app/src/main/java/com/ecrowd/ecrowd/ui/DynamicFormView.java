@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
@@ -44,7 +45,7 @@ public class DynamicFormView extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         formLayout = new RelativeLayout(this);
-        formLayout.setBackgroundColor(Color.CYAN);
+        formLayout.setBackgroundColor(Color.argb(250, 159, 226, 244));
         context_current = this;
         intent = getIntent();
         //Form Basic Information
